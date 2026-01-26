@@ -1,0 +1,219 @@
+"""
+simulate_dual_lattice.py
+
+Minimal implementation of the dual-lattice self-healing field system.
+
+- 2D scalar field phi(x, y, t)
+- Double-well collapse term:  -(phi^3 - phi)
+- Diffusion:                  D * laplacian(phi)
+- Dual-lattice tension:       lambda_ * (phi_dual - phi)
+- Exponential memory kernel:  m = (1-alpha)*m + alpha*phi
+- Noise ("wobble"):           eta * xi * phi
+- Optional "breath" forcing:  eps * sin(omega * t)
+- Scars:                      persistent defects at high |grad phi|
+
+This script:
+- Runs a baseline simulation
+- Saves numpy arrays for phi, scars, and coherence history
+
+You can later:
+- Plot results with a separate plotting script
+- Extend this to run ablation experiments, etc.
+"""
+
+import numpy as np
+from scipy.fft import fft2, ifft2  # Fourier dual-lattice reference
+import os
+
+# ---------------------------
+# Parameters
+# ---------------------------
+
+NX, NY = 100, 100        # grid size
+DX = 1.0                 # spatial step (lattice spacing)
+DT = 0.01                # time step
+STEPS = 5000             # total time steps (adjust as needed)
+SAVE_EVERY = 50          # record metrics every N steps
+
+D = 0.1                  # diffusion coefficient
+LAMBDA = 0.2             # dual-lattice tension strength
+ALPHA = 0.05             # memory kernel weight
+ETA = 0.1                # noise strength
+EPS_BREATH = 0.0         # breath forcing amplitude (0 = off)
+OMEGA_BREATH = 0.5       # breath frequency
+
+THETA_SCAR = 0.7         # gradient threshold for scar formation
+MU_SCAR = 0.5            # strength of scar potential
+
+C_SCALE = 6.0            # coherence normalization factor (~[0,10]); set to 1.0 for raw
+
+# Output directory
+OUT_DIR = "output"
+os.makedirs(OUT_DIR, exist_ok=True)
+
+
+# ---------------------------
+# Helper functions
+# ---------------------------
+
+def laplacian(field: np.ndarray) -> np.ndarray:
+    """
+    2D Laplacian with periodic boundary conditions.
+    5-point stencil.
+    """
+    up    = np.roll(field, -1, axis=0)
+    down  = np.roll(field,  1, axis=0)
+    left  = np.roll(field, -1, axis=1)
+    right = np.roll(field,  1, axis=1)
+    center = field
+    return (up + down + left + right - 4.0 * center) / (DX ** 2)
+
+
+def compute_gradient_magnitude(field: np.ndarray) -> np.ndarray:
+    """
+    Simple finite-difference gradient magnitude.
+    Periodic boundaries.
+    """
+    dfdx = (np.roll(field, -1, axis=0) - np.roll(field, 1, axis=0)) / (2.0 * DX)
+    dfdy = (np.roll(field, -1, axis=1) - np.roll(field, 1, axis=1)) / (2.0 * DX)
+    return np.sqrt(dfdx ** 2 + dfdy ** 2)
+
+
+def coherence_metric(phi: np.ndarray, scars: np.ndarray) -> float:
+    """
+    Coherence C(t) = C_SCALE * (sqrt(<|grad phi|^2> + <min((phi-1)^2, (phi+1)^2)>) + <scar_fraction>)
+    Returns a single scalar.
+    """
+    grad_mag = compute_gradient_magnitude(phi)
+    term_grad = np.mean(grad_mag ** 2)
+
+    # distance to nearest well (±1)
+    dist_plus = (phi - 1.0) ** 2
+    dist_minus = (phi + 1.0) ** 2
+    well_term = np.minimum(dist_plus, dist_minus)
+    term_well = np.mean(well_term)
+
+    scar_fraction = np.mean(scars.astype(float))
+
+    C_raw = np.sqrt(term_grad + term_well) + scar_fraction
+    C = C_raw * C_SCALE
+    return float(C)
+
+
+# ---------------------------
+# Initialization
+# ---------------------------
+
+rng = np.random.default_rng()
+
+# Start near zero with small noise (matches experiments)
+phi = 0.01 * rng.normal(size=(NX, NY))
+
+# Dual lattice as frozen Fourier reference at t=0
+phi0_hat = fft2(phi.copy())
+phi_dual = np.real(ifft2(phi0_hat))  # stays constant throughout the sim
+
+# Exponential memory field
+m = np.zeros_like(phi)
+
+# Scar tracking
+scars = np.zeros_like(phi, dtype=bool)
+scar_values = np.zeros_like(phi)
+
+# For recording time series
+num_records = STEPS // SAVE_EVERY + 1
+C_history = np.zeros(num_records, dtype=float)
+scar_density_history = np.zeros(num_records, dtype=float)
+record_times = np.zeros(num_records, dtype=float)
+
+
+# ---------------------------
+# Main simulation loop
+# ---------------------------
+
+t = 0.0
+record_idx = 0
+
+print("Starting simulation...")
+print(f"Grid: {NX}x{NY}, steps: {STEPS}, dt: {DT}")
+print("Dual lattice: FROZEN at t=0 (Fourier reference)")
+print(f"Coherence scaling: {C_SCALE}")
+
+# Record initial state
+C_history[record_idx] = coherence_metric(phi, scars)
+scar_density_history[record_idx] = np.mean(scars.astype(float))
+record_times[record_idx] = t
+record_idx += 1
+
+for step in range(1, STEPS + 1):
+    t = step * DT
+
+    # Collapse term: double-well potential toward ±1
+    collapse_term = -(phi ** 3 - phi)
+
+    # Diffusion term
+    diff_term = D * laplacian(phi)
+
+    # Dual-lattice tension term (phi_dual stays constant!)
+    dual_term = LAMBDA * (phi_dual - phi)
+
+    # Update memory field (exponential moving average)
+    m = (1.0 - ALPHA) * m + ALPHA * phi
+    memory_term = m
+
+    # Noise ("wobble")
+    noise = ETA * rng.normal(size=phi.shape) * phi
+
+    # Breath forcing (global sinusoidal)
+    breath = EPS_BREATH * np.sin(OMEGA_BREATH * t)
+
+    # Scar formation: detect new scars where |grad phi| > THETA_SCAR
+    grad_mag = compute_gradient_magnitude(phi)
+    new_scars = (grad_mag > THETA_SCAR) & (~scars)
+    if np.any(new_scars):
+        scars[new_scars] = True
+        scar_values[new_scars] = phi[new_scars]
+
+    # Scar potential: pull scarred sites back toward stored values
+    scar_potential = MU_SCAR * scars * (scar_values - phi)
+
+    # Combine all contributions
+    dphi_dt = collapse_term + diff_term + dual_term + memory_term + scar_potential + noise + breath
+
+    # Time update
+    phi = phi + DT * dphi_dt
+
+    # Optional: keep phi bounded (avoid runaway extremes)
+    phi = np.clip(phi, -3.0, 3.0)
+
+    # Record metrics every SAVE_EVERY steps
+    if step % SAVE_EVERY == 0:
+        C_history[record_idx] = coherence_metric(phi, scars)
+        scar_density_history[record_idx] = np.mean(scars.astype(float))
+        record_times[record_idx] = t
+        record_idx += 1
+
+        if step % (SAVE_EVERY * 10) == 0:
+            print(
+                f"Step {step}/{STEPS}  t={t:.2f}  "
+                f"C={C_history[record_idx-1]:.3f}  "
+                f"scars={scar_density_history[record_idx-1]:.3f}"
+            )
+
+print("Simulation complete.")
+
+# ---------------------------
+# Save results
+# ---------------------------
+
+np.save(os.path.join(OUT_DIR, "phi_final.npy"), phi)
+np.save(os.path.join(OUT_DIR, "phi_dual.npy"), phi_dual)           # dual reference
+np.save(os.path.join(OUT_DIR, "scars_final.npy"), scars)
+np.save(os.path.join(OUT_DIR, "scar_values.npy"), scar_values)     # stored scar values
+np.save(os.path.join(OUT_DIR, "C_history.npy"), C_history)
+np.save(os.path.join(OUT_DIR, "scar_density_history.npy"), scar_density_history)
+np.save(os.path.join(OUT_DIR, "times.npy"), record_times)
+
+print(f"Saved results to '{OUT_DIR}/' directory.")
+print(f"Final coherence: {C_history[-1]:.3f}")
+print(f"Final scar density: {scar_density_history[-1]:.3f}")
