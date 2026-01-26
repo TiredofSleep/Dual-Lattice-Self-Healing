@@ -7,7 +7,7 @@ Minimal implementation of a self-organizing field system with template-based reg
 This repository contains the reference implementation used in the simulations described in:
 
 > **Template-Based Self-Healing in a Dual-Lattice Field System with Memory**  
-> Brayden Sanders, 7 Site LLC 2026 (preprint)
+> Brayden Sanders, TiredofSleep, 7 Site LLC 2026 (preprint)
 
 ---
 
@@ -22,3 +22,6 @@ python simulate_dual_lattice.py
 
 # generate summary figure
 python plot_results.py
+
+
+DOI 10.5281/zenodo.18379788
