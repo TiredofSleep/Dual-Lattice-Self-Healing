@@ -1,0 +1,49 @@
+import numpy as np
+import matplotlib.pyplot as plt
+import os
+
+OUT_DIR = "output"
+
+# Load data
+times = np.load(os.path.join(OUT_DIR, "times.npy"))
+C = np.load(os.path.join(OUT_DIR, "C_history.npy"))
+scars = np.load(os.path.join(OUT_DIR, "scar_density_history.npy"))
+phi_final = np.load(os.path.join(OUT_DIR, "phi_final.npy"))
+scars_final = np.load(os.path.join(OUT_DIR, "scars_final.npy"))
+
+fig, axes = plt.subplots(2, 2, figsize=(12, 10))
+
+# Coherence evolution
+ax = axes[0, 0]
+ax.plot(times, C, 'b-', linewidth=2)
+ax.axhline(y=4.93, color='purple', linestyle='--', linewidth=2, label='C* ≈ 4.93')
+ax.set_xlabel("Time")
+ax.set_ylabel("Coherence C")
+ax.set_title("Coherence Evolution")
+ax.legend()
+ax.grid(True, alpha=0.3)
+
+# Scar density
+ax = axes[0, 1]
+ax.plot(times, scars, 'g-', linewidth=2)
+ax.set_xlabel("Time")
+ax.set_ylabel("Scar Density")
+ax.set_title("Scar Formation")
+ax.grid(True, alpha=0.3)
+
+# Final field
+ax = axes[1, 0]
+im = ax.imshow(phi_final, cmap='RdBu_r', origin='lower', vmin=-1, vmax=1)
+plt.colorbar(im, ax=ax, label='φ')
+ax.set_title("Final Field φ")
+
+# Final scars
+ax = axes[1, 1]
+ax.imshow(scars_final, cmap='Greys', origin='lower')
+ax.set_title(f"Final Scars (n={np.sum(scars_final)})")
+
+plt.tight_layout()
+out_path = os.path.join(OUT_DIR, "summary.png")
+plt.savefig(out_path, dpi=150, bbox_inches='tight')
+print(f"Saved plot to {out_path}")
+plt.show()
