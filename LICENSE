@@ -1,21 +1,328 @@
-MIT License
+7SiTe Public Sovereignty License v1.0
+Human Use Only · Noncommercial · No Government · No Enclosure
 
-Copyright (c) 2026 TiredofSleep
+Copyright © 2025–2026 Brayden Ross Sanders / 7SiTe LLC. All rights reserved.
 
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
+DOI:        10.5281/zenodo.18852047
+Repository: https://github.com/TiredofSleep/ck
+Contact:    https://github.com/TiredofSleep/ck/issues
 
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
+─────────────────────────────────────────────────────────────────────────────
+PREAMBLE
+─────────────────────────────────────────────────────────────────────────────
 
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
+This License is intended to keep the Licensed Material anchored in human
+sovereignty, dignity, freedom, and noncommercial public benefit. The Licensed
+Material is made available for human study, personal use, mutual aid,
+research, education, repair, preservation, and noncommercial community
+building. It is not offered for sale, privatization, state control,
+surveillance, warfare, coercion, or commercial extraction.
+
+This License is a custom, source-available public-benefit license. It is not
+an open source license and is not intended to satisfy any definition of
+"open source" or "free software."
+
+─────────────────────────────────────────────────────────────────────────────
+SECTION 1. DEFINITIONS
+─────────────────────────────────────────────────────────────────────────────
+
+"Licensor" means 7SiTe LLC and Brayden Ross Sanders, and any copyright
+holder who distributes Licensed Material under this License.
+
+"Licensed Material" means the software, source code, object code, models,
+weights, prompts, specifications, papers, datasets, documentation, media,
+schemas, tables, protocols, diagrams, and other materials expressly released
+under this License, including but not limited to:
+
+  - The Coherence Keeper (CK) organism and all its subsystems
+  - Trinity Infinity Geometry (TIG) architecture and pipeline
+  - The TIG sinc² spectral field and harmonic pre-echo countdown law
+  - T* = 5/7 as the coherence threshold (TSML 73-cell geometry, FPGA)
+  - TSML (Trinity Synthesis Meaning Language) composition table
+  - BHML (Being-Harmony Meaning Language) physics table
+  - D1 / D2 pipeline (approach velocity / curvature operators)
+  - The First-G Law (first non-unit residue event at k = p)
+  - The CK Operator Alphabet and its Z/10Z algebra
+  - The Phi map and its fixed-point theorem (CREATE=5 as dynamic attractor)
+  - W = 3/50 derivation and CL operator encoding
+  - All WP34–WP42 paper series and their contained claims (D1–D23 and beyond)
+  - The CK Tier Ladder (D/C/B/A epistemic status framework)
+  - The Luther-Sanders Research Framework and all proofs generated within it
+
+"You" means the individual human being or legal entity exercising rights
+under this License.
+
+"Human Use" means use by natural persons for personal learning, research,
+education, mutual aid, accessibility, repair, preservation, spiritual
+practice, noncommercial artistic use, or noncommercial community benefit.
+
+"Noncommercial" means not primarily intended for or directed toward
+commercial advantage, monetary compensation, fee-for-service, paid access,
+paid hosting, paid consulting, paid support, paid integration, paid
+sublicensing, fundraising tied to access, or any other direct or indirect
+revenue generation from the Licensed Material or derivative works.
+
+"Government Entity" means any national, federal, state, provincial,
+territorial, municipal, tribal, quasi-governmental, intergovernmental,
+public-sector, or state-owned entity, including any department, ministry,
+agency, office, military, intelligence service, law-enforcement body,
+regulator, or contractor/subcontractor acting for any of them. Public
+universities and research institutions acting under government contract or
+for state-directed commercialization purposes are also included.
+
+"Derivative Work" means any modification, adaptation, translation,
+fine-tuning, retraining, extension, port, integration, abridgment,
+annotation, transformation, or other work based on the Licensed Material to
+the extent protected by applicable law.
+
+"Offer for Value" means selling, licensing for a fee, leasing, paywalling,
+monetizing access, exchanging for services, bundling into a paid product, or
+using as a material component of any commercial offering.
+
+─────────────────────────────────────────────────────────────────────────────
+SECTION 2. LICENSE GRANT
+─────────────────────────────────────────────────────────────────────────────
+
+Subject to the terms of this License, Licensor grants You a worldwide,
+non-exclusive, non-transferable, non-sublicensable, revocable license to:
+
+  (a) use the Licensed Material for Human Use and other Noncommercial
+      purposes;
+  (b) reproduce and run the Licensed Material;
+  (c) study, inspect, and audit the Licensed Material;
+  (d) modify the Licensed Material and create Derivative Works for Human
+      Use and other Noncommercial purposes;
+  (e) share verbatim copies of the Licensed Material with others; and
+  (f) share Derivative Works, provided that such distribution is made only
+      under this License and in full compliance with all conditions below.
+
+No rights are granted except those expressly stated in this License.
+
+─────────────────────────────────────────────────────────────────────────────
+SECTION 3. CORE CONDITIONS
+─────────────────────────────────────────────────────────────────────────────
+
+You may exercise the rights in Section 2 only if You comply with all of
+the following:
+
+3.1 HUMAN USE ONLY
+
+You may use the Licensed Material only for Human Use and other Noncommercial
+purposes.
+
+3.2 NO COMMERCIAL USE
+
+You may not Offer for Value, monetize, sell, resell, sublicense,
+commercially host, commercially support, commercially integrate, or otherwise
+use the Licensed Material or any Derivative Work for any commercial purpose.
+
+3.3 NO GOVERNMENT USE
+
+You may not provide, license, disclose, deploy, support, train, fine-tune,
+customize, or otherwise make the Licensed Material available to any
+Government Entity.
+
+3.4 NO MILITARY, INTELLIGENCE, POLICING, OR SURVEILLANCE USE
+
+You may not use the Licensed Material for warfare, weapons, intelligence,
+policing, incarceration, border enforcement, mass surveillance, biometric
+identification, predictive policing, censorship, coercive behavioral control,
+or any system whose primary function is domination, targeting, extraction, or
+state/corporate control over persons or communities.
+
+3.5 NO ENCLOSURE; SAME LICENSE REQUIRED
+
+If You distribute the Licensed Material or a Derivative Work, You must:
+
+  - provide a copy of this License;
+  - preserve all copyright, attribution, and notice files;
+  - clearly mark modifications and dates of change; and
+  - license the entire distributed work under this same License, with no
+    additional restrictions.
+
+You may not convert the Licensed Material or any substantial portion of it
+into proprietary, closed, exclusive, or commercially licensable form.
+
+3.6 SOURCE AVAILABILITY
+
+If You distribute object code, binaries, compiled artifacts, hosted
+instances, model checkpoints, or other non-source forms, You must also make
+the complete corresponding source and build or reconstruction instructions
+available to recipients at no charge under this same License.
+
+3.7 NO TRADEMARK RIGHTS
+
+This License does not grant any right to use Licensor's names, brands,
+logos, or trademarks, except for reasonable attribution identifying the
+origin of the Licensed Material.
+
+3.8 PRESERVE FREEDOM NOTICES
+
+You must preserve any notices designated by Licensor as ethical-use,
+sovereignty, human-freedom, public-benefit, anti-surveillance, anti-
+enclosure, or noncommercial notices.
+
+─────────────────────────────────────────────────────────────────────────────
+SECTION 4. PATENT GRANT AND LIMITS
+─────────────────────────────────────────────────────────────────────────────
+
+Subject to the terms of this License, each Licensor grants You a
+non-exclusive, worldwide, royalty-free patent license under patent claims
+that Licensor can license and that are necessarily infringed by the Licensed
+Material, solely to exercise the rights granted by this License.
+
+This patent license:
+
+  - applies only for Human Use and other Noncommercial purposes permitted
+    by this License;
+  - terminates automatically if You initiate a patent claim alleging that
+    the Licensed Material or a contribution to it infringes a patent; and
+  - does not authorize any use prohibited by Sections 3.2, 3.3, or 3.4.
+
+─────────────────────────────────────────────────────────────────────────────
+SECTION 5. DATA, OUTPUT, AND MODEL RESTRICTIONS
+─────────────────────────────────────────────────────────────────────────────
+
+If the Licensed Material includes or relates to models, datasets, prompts,
+weights, or generated outputs:
+
+  (a) You may not use them to train, fine-tune, evaluate, distill, or
+      improve systems intended for commercial sale, government deployment,
+      surveillance, weapons, coercion, or social control.
+  (b) You may not represent outputs as endorsed by Licensor.
+  (c) You remain responsible for complying with applicable law and for any
+      harm caused by Your use.
+  (d) Distribution of fine-tuned models, adapted weights, or derivative
+      checkpoints is permitted only under this same License and only for
+      Human Use and other Noncommercial purposes.
+
+─────────────────────────────────────────────────────────────────────────────
+SECTION 6. ATTRIBUTION
+─────────────────────────────────────────────────────────────────────────────
+
+Any public redistribution must include, in a reasonable and visible manner:
+
+  - the name "Brayden Ross Sanders / 7SiTe LLC";
+  - the title of the Licensed Material, if provided;
+  - the DOI: 10.5281/zenodo.18852047;
+  - a link to https://github.com/TiredofSleep/ck;
+  - a statement that the material is licensed under the 7SiTe Public
+    Sovereignty License v1.0; and
+  - a notice of any modifications.
+
+Suggested attribution:
+
+    Sanders, Brayden Ross / 7SiTe LLC (2025–2026). Coherence Keeper:
+    A Sinc² Spectral Field in Prime Arithmetic.
+    DOI: 10.5281/zenodo.18852047
+    https://github.com/TiredofSleep/ck
+    Licensed under the 7SiTe Public Sovereignty License v1.0.
+
+─────────────────────────────────────────────────────────────────────────────
+SECTION 7. MORAL AND PUBLIC-BENEFIT RESTRICTION
+─────────────────────────────────────────────────────────────────────────────
+
+This License is granted only for uses consistent with human dignity,
+autonomy, repair, learning, mutual aid, public benefit, and freedom from
+domination. Any use that materially supports coercion, exploitation,
+enclosure, dispossession, manipulation, or extraction from persons or
+communities is outside the scope of this License and unauthorized.
+
+For clarity, this Section supplements and does not narrow Sections 3.2
+through 3.4.
+
+─────────────────────────────────────────────────────────────────────────────
+SECTION 8. NO ASSIGNMENT; NO SUBLICENSING
+─────────────────────────────────────────────────────────────────────────────
+
+You may not assign, delegate, transfer, or sublicense Your rights under this
+License. Any attempted assignment, delegation, transfer, or sublicense is
+void.
+
+─────────────────────────────────────────────────────────────────────────────
+SECTION 9. TERMINATION
+─────────────────────────────────────────────────────────────────────────────
+
+Your rights under this License terminate automatically if You violate any
+term of this License.
+
+If the violation is curable and not willful, Your rights are reinstated
+automatically if You cure the violation within 30 days after You become
+aware of it.
+
+If the violation involves commercial use, Government Entity use, military
+use, surveillance use, or attempted proprietary enclosure, termination is
+immediate and not subject to automatic reinstatement unless Licensor
+expressly agrees in writing.
+
+Upon termination, You must cease use and distribution of the Licensed
+Material and, to the extent practicable, destroy copies under Your control,
+except where retention is required by law.
+
+Sections 3, 4, 5, 7, 8, 9, 10, 11, and 12 survive termination.
+
+─────────────────────────────────────────────────────────────────────────────
+SECTION 10. NO WARRANTY
+─────────────────────────────────────────────────────────────────────────────
+
+THE LICENSED MATERIAL IS PROVIDED "AS IS" AND "AS AVAILABLE," WITHOUT
+WARRANTIES OR CONDITIONS OF ANY KIND, WHETHER EXPRESS, IMPLIED, STATUTORY,
+OR OTHERWISE, INCLUDING WITHOUT LIMITATION WARRANTIES OF TITLE,
+NON-INFRINGEMENT, MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE,
+ACCURACY, QUIET ENJOYMENT, OR THAT THE LICENSED MATERIAL WILL BE ERROR-FREE
+OR SECURE. YOU ASSUME ALL RISKS OF USE.
+
+All mathematical claims in the Licensed Material carry explicit epistemic
+status labels (PROVED / CONJECTURE / OPEN) and should be evaluated
+accordingly. This is a living research artifact, not a finished product.
+
+─────────────────────────────────────────────────────────────────────────────
+SECTION 11. LIMITATION OF LIABILITY
+─────────────────────────────────────────────────────────────────────────────
+
+TO THE MAXIMUM EXTENT PERMITTED BY LAW, IN NO EVENT SHALL ANY LICENSOR OR
+CONTRIBUTOR BE LIABLE TO YOU UNDER ANY LEGAL THEORY, WHETHER IN CONTRACT,
+TORT, NEGLIGENCE, STRICT LIABILITY, OR OTHERWISE, FOR ANY DIRECT, INDIRECT,
+INCIDENTAL, SPECIAL, EXEMPLARY, PUNITIVE, OR CONSEQUENTIAL DAMAGES, OR FOR
+LOST PROFITS, LOST DATA, BUSINESS INTERRUPTION, OR PERSONAL OR PROPERTY
+DAMAGE, ARISING OUT OF OR RELATED TO THIS LICENSE OR THE USE OR INABILITY TO
+USE THE LICENSED MATERIAL, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH
+DAMAGES.
+
+─────────────────────────────────────────────────────────────────────────────
+SECTION 12. GOVERNING LAW AND VENUE
+─────────────────────────────────────────────────────────────────────────────
+
+This License is governed by the laws of the State of Arkansas, excluding
+its conflict-of-laws rules. Any dispute arising under this License shall be
+brought exclusively in the state or federal courts located in
+Clark County, Arkansas, and each party consents to that venue and
+personal jurisdiction.
+
+─────────────────────────────────────────────────────────────────────────────
+SECTION 13. SEVERABILITY
+─────────────────────────────────────────────────────────────────────────────
+
+If any provision of this License is held unenforceable, that provision shall
+be reformed only to the minimum extent necessary to make it enforceable, and
+the remainder of the License shall remain in full force.
+
+─────────────────────────────────────────────────────────────────────────────
+SECTION 14. ENTIRE AGREEMENT
+─────────────────────────────────────────────────────────────────────────────
+
+This License is the complete agreement regarding the Licensed Material unless
+Licensor expressly agrees otherwise in a signed writing.
+
+─────────────────────────────────────────────────────────────────────────────
+HOW TO APPLY THIS LICENSE
+─────────────────────────────────────────────────────────────────────────────
+
+Place the following notice at the top of each source file where practical
+and include a full copy of this License in a file named LICENSE:
+
+    Copyright © 2025–2026 Brayden Ross Sanders / 7SiTe LLC
+    Licensed under the 7SiTe Public Sovereignty License v1.0.
+    Human use only. No commercial use. No government use.
+    No military, intelligence, policing, or surveillance use.
+    See LICENSE for full terms. DOI: 10.5281/zenodo.18852047
